@@ -5,7 +5,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.tomcat</groupId>
   <artifactId>Tomcat9.0</artifactId>
-  <packaging>pom</packaging>
   <name>Tomcat9</name>
   <version>9.0.20</version>
 
@@ -15,10 +14,6 @@
     <resources>
       <resource>
         <directory>java</directory>
-        <includes>
-          <include>**/*.properties</include>
-          <include>**/*.xml</include>
-        </includes>
       </resource>
     </resources>
     <plugins>
@@ -34,9 +29,6 @@
       </plugin>
     </plugins>
   </build>
-  <!--<modules>
-    <module>../servlet-app</module>
-  </modules>-->
 
   <dependencies>
     <dependency>

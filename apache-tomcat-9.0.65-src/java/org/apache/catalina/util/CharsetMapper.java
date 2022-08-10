@@ -17,7 +17,6 @@
 package org.apache.catalina.util;
 
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Locale;
 import java.util.Properties;
@@ -73,7 +72,7 @@ public class CharsetMapper {
         if (JreCompat.isGraalAvailable()) {
             map.put("en", "ISO-8859-1");
         } else {
-            try (InputStream stream = new FileInputStream(name)) {
+            try (InputStream stream = this.getClass().getResourceAsStream(name)) {
                 map.load(stream);
             } catch (Throwable t) {
                 ExceptionUtils.handleThrowable(t);
