@@ -5,7 +5,7 @@
   this work for additional information regarding copyright ownership.
   The ASF licenses this file to You under the Apache License, Version 2.0
   (the "License"); you may not use this file except in compliance with
-  the License.  You may obtain a copy of the License at
+  the License.  You may obtain a copy of the License atN
 
       http://www.apache.org/licenses/LICENSE-2.0
 
@@ -53,4 +53,9 @@
   <user username="both" password="<must-be-changed>" roles="tomcat,role1"/>
   <user username="role1" password="<must-be-changed>" roles="role1"/>
 -->
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="admin-gui"/>
+  <role rolename="admin-script"/>
+  <user username="tomcat" password="tomcat" roles="admin-gui,admin-script,manager-gui,manager-script"/>
 </tomcat-users>

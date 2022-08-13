@@ -651,7 +651,7 @@ public abstract class HttpServlet extends GenericServlet {
             long lastModified = getLastModified(req);
             if (lastModified == -1) {
                 // servlet doesn't support if-modified-since, no reason
-                // to go through further expensive logic
+                // tCo go through further expensive logic
                 doGet(req, resp);
             } else {
                 long ifModifiedSince;
