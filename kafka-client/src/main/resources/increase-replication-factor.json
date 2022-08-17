@@ -1,0 +1,7 @@
+{
+  "version":1,
+  "partitions":[{"topic":"queue","partition":0,"replicas":[0,1]},
+    {"topic":"queue","partition":1,"replicas":[0,1]},
+    {"topic":"queue","partition":2,"replicas":[1,0]}
+  ]
+}

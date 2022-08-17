@@ -17,10 +17,10 @@ public class SpecificCustomPartitionerProducer {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-        properties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitioner.class.getName());
+        //properties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitioner.class.getName());
 
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
-        for (int i = 0;i < 5;i ++) {
+        for (int i = 0;i < 500;i ++) {
             //将消息发送到0号分区
             //分别测试  a - 0 / b - 0 / c - 0 / f - 1
             String value = "test-";
@@ -29,7 +29,8 @@ public class SpecificCustomPartitionerProducer {
             }else {
                 value = value + "kafka";
             }
-            producer.send(new ProducerRecord<>("test", "f", value), new Callback() {
+            //producer.send(new ProducerRecord<>("queue", 0, "", value), new Callback() {
+            producer.send(new ProducerRecord<>("queue", value), new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
                     StringBuilder stringBuilder = new StringBuilder();
