@@ -12,8 +12,6 @@ import java.util.Properties;
  * */
 public class SyncProducer {
 
-
-
     public void asyncWithoutCallback() {
         Properties properties = new Properties();
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092,localhost:9093,localhost:9094");
