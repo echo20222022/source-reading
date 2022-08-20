@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: cloud-turbin
+
+server:
+  port: 10000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+
+turbine:
+  appConfig: cloud-gateway,cloud-fd,cloud-base
+  clusterNameExpression: "'default'"
+

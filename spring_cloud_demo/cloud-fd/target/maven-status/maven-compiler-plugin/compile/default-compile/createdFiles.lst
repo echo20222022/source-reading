@@ -1,0 +1,5 @@
+com/cloud/fd/controller/FdController.class
+com/cloud/fd/client/CloudApiFeign.class
+com/cloud/fd/client/CloudApiFeign$DefaultFallbackFactory.class
+com/cloud/fd/FdApplication.class
+com/cloud/fd/config/FdConfig.class

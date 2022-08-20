@@ -1,0 +1,71 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: cloud-fd
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:20000
+#日志配置
+#包的日志级别
+logging:
+  level:
+    com:
+      cloud:
+        fd:
+          client:
+            CloudApiFeign: debug
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+
+    #指定区域，一个区可以包含多个zone
+    #region: china
+    #avaliable-zones:
+    #  china: e, s, n, w
+    #service-url:
+    #  e: url1
+    #  s: url2
+    #  n: url3
+    #  w: url4
+
+#开启对hystrix的支持
+feign:
+  hystrix:
+    enabled: true
+#hystrix高级配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10   #超时时间
+        metrics:
+          rollingStats:
+            timeInMilliseconds: 3000  #时间窗
+        circuitBreaker:
+          requestVolumeThreshold: 3  #最小请求次数
+          errorThresholdPercentage: 50 #失败率
+          sleepWindowInMilliseconds: 3000 #活动窗口
+    UserApiFeign#getUserName(Long):  #单独配置某个方法的超时时间
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000   #超时时间
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  security:
+    enabled: false
+  shutdown:
+    enabled: true
+
+cloudApi: http://localhost:8081

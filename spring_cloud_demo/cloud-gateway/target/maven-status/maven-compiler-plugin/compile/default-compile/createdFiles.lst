@@ -1,0 +1,4 @@
+com/cloud/gateway/GatewayApplication.class
+com/cloud/gateway/filter/GatewayFilter.class
+com/cloud/gateway/fallback/GlobalFallback.class
+com/cloud/gateway/fallback/GlobalFallback$1.class

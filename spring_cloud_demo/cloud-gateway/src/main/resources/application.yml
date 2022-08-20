@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: cloud-gateway
+
+server:
+  port: 9000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+
+
+#配置路由规则
+zuul:
+  routes:
+    cloud-fd: /fd/**
+  #屏蔽掉通过服务名称访问
+  ignored-services: "*"
+  #指定统一的前缀
+  prefix: /cloud
+  #屏蔽指定路径
+  #  *为通配符
+  #  /** 可以匹配0或多级路径
+  #  /* 可以匹配1级路径
+  #  /? 可以匹配1级路径，且只能包含一个字符
+  #ignore-patterns: /**/list/**
+
+  #自定义敏感头过滤器， 会覆盖掉默认的敏感头 ZuulProperties.java -> sensitiveHeaders
+  sensitive-headers: token
+  ribbon-isolation-strategy: thread
+  #ratelimit:
+    #enabled: true  #开启多维度限流
+
+    #在一个单位时间窗内 通过该zuul的用户数量、ip数量、及url数量 都不能超过3个
+    #default-policy:  #设置限流策略
+        #quota: 1     #指定限流的时间窗数量
+        #refresh-interval: 3    #时间窗大小,单位是秒
+        #limit: 3               #在指定的单位时间窗内 启用限流的 限定值
+        #type: origin   #  user  #cloud-gateway:fd:anonymous   request.getRemoteUser();
+                    #  url   cloud-gateway:fd:/hello
+                    #  origin  cloud-gateway:fd:0:0:0:0:0:0:0:1
+      #,origin,url   #指定限流维度
+
+  #灰度规则
+  gray:
+    users: zhangsan,lisi
+    version: V2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  security:
+    enabled: false
