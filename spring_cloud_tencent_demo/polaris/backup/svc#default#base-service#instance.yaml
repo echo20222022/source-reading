@@ -1,0 +1,70 @@
+---
+code: 200000
+info: "execute success"
+type: "INSTANCE"
+service:
+  name: "base-service"
+  namespace: "default"
+  metadata:
+    internal-auto-created: "true"
+  ports: ""
+  business: ""
+  department: ""
+  cmdb_mod1: ""
+  cmdb_mod2: ""
+  cmdb_mod3: ""
+  comment: ""
+  owners: "Polaris"
+  ctime: "2022-08-19 21:17:59"
+  mtime: "2022-08-19 21:17:59"
+  revision: "b5940676e467836af8229c5d2770147f81524454"
+  platform_id: ""
+instances:
+- id: "17a3ccfec79e712c4d14668e8bff39ac10691b2b"
+  service: "base-service"
+  namespace: "default"
+  host: "192.168.31.45"
+  port: 10010
+  protocol: "http"
+  weight: 100
+  healthCheck:
+    type: "HEARTBEAT"
+    heartbeat:
+      ttl: 5
+  healthy: true
+  isolate: false
+  location:
+    region: "guangzhou"
+  metadata:
+    region: "guangzhou"
+    version: ""
+    protocol: "http"
+    internal-ip: "192.168.31.45"
+    internal-address: "192.168.31.45:10010"
+  mtime: "2022-08-20 08:52:44"
+  revision: "b6723fafbdff4f738f7093cb35408ca0"
+  enableHealthCheck: true
+- id: "5ba3d0d4372d183f6ac8c2c52ad103d730d1b1a5"
+  service: "base-service"
+  namespace: "default"
+  host: "192.168.31.45"
+  port: 10011
+  protocol: "http"
+  weight: 100
+  healthCheck:
+    type: "HEARTBEAT"
+    heartbeat:
+      ttl: 5
+  healthy: true
+  isolate: false
+  location:
+    region: "guangzhou"
+  metadata:
+    internal-address: "192.168.31.45:10011"
+    region: "guangzhou"
+    version: ""
+    protocol: "http"
+    internal-ip: "192.168.31.45"
+  mtime: "2022-08-20 08:52:44"
+  revision: "b6723fafbdff4f738f7093cb35408ca0"
+  enableHealthCheck: true

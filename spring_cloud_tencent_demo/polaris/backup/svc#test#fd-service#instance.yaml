@@ -1,0 +1,45 @@
+---
+code: 200000
+info: "execute success"
+type: "INSTANCE"
+service:
+  name: "fd-service"
+  namespace: "test"
+  metadata:
+    internal-auto-created: "true"
+  ports: ""
+  business: ""
+  department: ""
+  cmdb_mod1: ""
+  cmdb_mod2: ""
+  cmdb_mod3: ""
+  comment: ""
+  owners: "Polaris"
+  ctime: "2022-08-19 19:12:40"
+  mtime: "2022-08-19 19:12:40"
+  revision: "1820b2af5c924a96653ef60e9811c7a9e501038a"
+  platform_id: ""
+instances:
+- id: "6c4ed556538aed7d9f9cf0ebc0a75d7a71f349bf"
+  service: "fd-service"
+  namespace: "test"
+  host: "192.168.31.45"
+  port: 10020
+  protocol: "http"
+  weight: 100
+  healthCheck:
+    type: "HEARTBEAT"
+    heartbeat:
+      ttl: 5
+  healthy: true
+  isolate: false
+  location:
+    region: "guangzhou"
+  metadata:
+    protocol: "http"
+    internal-address: "192.168.31.45:10020"
+    region: "guangzhou"
+    internal-ip: "192.168.31.45"
+  mtime: "2022-08-19 19:12:40"
+  revision: "59a74427f39d4b4a8ef76344162137a4"
+  enableHealthCheck: true

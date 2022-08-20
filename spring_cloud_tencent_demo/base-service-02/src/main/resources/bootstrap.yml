@@ -1,0 +1,20 @@
+server:
+  port: 10011
+spring:
+  application:
+    name: base-service
+  cloud:
+    polaris:
+      address: grpc://127.0.0.1:8091
+      namespace: default
+      enabled: true
+      discovery:
+        enabled: true
+        register: true
+      heartbeat:
+        enabled: true
+        health-check-url: /health
+    tencent:
+      metadata:
+        content:
+          region: guangzhou

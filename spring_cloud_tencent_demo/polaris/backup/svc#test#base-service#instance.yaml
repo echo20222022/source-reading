@@ -1,0 +1,19 @@
+---
+code: 200000
+info: "execute success"
+type: "INSTANCE"
+service:
+  name: "base-service"
+  namespace: "test"
+  ports: ""
+  business: "基础架构"
+  department: "技术部"
+  cmdb_mod1: ""
+  cmdb_mod2: ""
+  cmdb_mod3: ""
+  comment: ""
+  owners: "04ae4ead86e1ecf5811e32a9fbca9bfa"
+  ctime: "2022-08-19 18:55:27"
+  mtime: "2022-08-19 18:55:27"
+  revision: "2f2131f60ef995399dd4a15c924296858f7f0895"
+  platform_id: ""

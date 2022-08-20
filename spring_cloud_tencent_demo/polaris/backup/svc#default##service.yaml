@@ -1,0 +1,15 @@
+---
+code: 200000
+info: "execute success"
+type: "SERVICES"
+service:
+  name: ""
+  namespace: "default"
+  revision: ""
+services:
+- name: "base-service"
+  namespace: "default"
+- name: "fd-service"
+  namespace: "default"
+- name: "gateway-zuul"
+  namespace: "default"
