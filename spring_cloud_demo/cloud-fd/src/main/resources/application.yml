@@ -44,7 +44,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 10   #超时时间
+            timeoutInMilliseconds: 1000   #超时时间
         metrics:
           rollingStats:
             timeInMilliseconds: 3000  #时间窗

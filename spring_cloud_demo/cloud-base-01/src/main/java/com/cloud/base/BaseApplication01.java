@@ -7,9 +7,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 //@SpringBootApplication
 //@EnableDiscoveryClient
-@SpringCloudApplication
-public class BaseApplication {
+//@SpringCloudApplication
+@SpringBootApplication
+//@EnableDiscoveryClient
+public class BaseApplication01 {
     public static void main(String[] args) {
-        SpringApplication.run(BaseApplication.class);
+        SpringApplication.run(BaseApplication01.class);
     }
 }

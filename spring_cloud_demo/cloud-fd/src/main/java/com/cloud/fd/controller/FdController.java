@@ -51,6 +51,7 @@ public class FdController {
         //System.out.println("cookie="+cookie);
 
         //FeignClient
+        System.out.println(request.getHeader("Host"));
 
 
         return cloudApi.hello();
@@ -58,7 +59,8 @@ public class FdController {
 
     @RequestMapping("/getUserNameById")
     public String getUserNameById(@RequestParam("id") Long id) {
-        return userApiFeign.getUserName(id);
+        //return userApiFeign.getUserName(id);
+        return null;
     }
 
     @HystrixCommand(

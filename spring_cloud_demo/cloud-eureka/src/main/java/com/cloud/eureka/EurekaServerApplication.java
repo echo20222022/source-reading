@@ -12,6 +12,9 @@ import org.springframework.cloud.netflix.eureka.server.EurekaServerAutoConfigura
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 @SpringBootApplication
@@ -21,7 +24,12 @@ public class EurekaServerApplication {
     //EurekaClientAutoConfiguration
     //EurekaDiscoveryClientConfiguration
     //EurekaDiscoveryClientConfiguration
+    //List
+    //Collection
+    //ArrayList
     public static void main(String[] args) {
-        SpringApplication.run(EurekaServerApplication.class);
+        //SpringApplication.run(EurekaServerApplication.class);
+        // LinkedList
+        System.out.println(10 >> 1);
     }
 }

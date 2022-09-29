@@ -1,0 +1,23 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: cloud-robot
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+  #灰度标识
+  #instance:
+  #  metadata-map:
+  #    version: V2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  security:
+    enabled: false

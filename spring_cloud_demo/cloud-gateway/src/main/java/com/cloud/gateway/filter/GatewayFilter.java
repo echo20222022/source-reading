@@ -6,6 +6,14 @@ import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.w3c.dom.ls.LSResourceResolver;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletMapping;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 
 @Component
 public class GatewayFilter extends ZuulFilter {
@@ -33,7 +41,7 @@ public class GatewayFilter extends ZuulFilter {
      * */
     @Override
     public int filterOrder() {
-        return 0;
+        return 10000;
     }
 
     /**
@@ -41,7 +49,11 @@ public class GatewayFilter extends ZuulFilter {
      * */
     @Override
     public boolean shouldFilter() {
-
+        RequestContext ctx = RequestContext.getCurrentContext();
+        boolean debugRouting = ctx.debugRouting();
+        boolean debugRequest = ctx.debugRequest();
+        System.out.println(debugRouting);
+        System.out.println(debugRequest);
         RequestContext requestContext = RequestContext.getCurrentContext();
         //如超载了
         /*if (!RATE_LIMITER.tryAcquire()) {
@@ -54,6 +66,21 @@ public class GatewayFilter extends ZuulFilter {
         /*if (requestContext.sendZuulResponse()) {
 
         }*/
+        Enumeration<Servlet> servlets = requestContext.getRequest().getServletContext().getServlets();
+        HttpServletMapping httpServletMapping = requestContext.getRequest().getHttpServletMapping();
+        String servletName = httpServletMapping.getServletName();
+        System.out.println(httpServletMapping.getMatchValue());
+        System.out.println(httpServletMapping.getPattern());
+        System.out.println(httpServletMapping.getMappingMatch());
+        System.out.println("servletName -> " + servletName);
+        System.out.println("servlet more -> " + servlets.hasMoreElements());
+        while (servlets.hasMoreElements()) {
+            Servlet servlet = servlets.nextElement();
+            String name = servlet.getClass().getName();
+            System.out.println("servlet name -> " + name);
+        }
+
+
 
         return true;
     }
@@ -65,10 +92,12 @@ public class GatewayFilter extends ZuulFilter {
      * */
     @Override
     public Object run() throws ZuulException {
-        RequestContext.getCurrentContext().getRequest();
+       HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
         RequestContext.getCurrentContext().getResponse();
         RequestContext.getCurrentContext().getResponseBody();
         //System.out.println("GatewayFilter 过滤通过");
+        //request.getServletContext();
+
         return null;
     }
 }

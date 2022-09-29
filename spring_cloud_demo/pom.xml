@@ -26,6 +26,8 @@
         <module>cloud-autoconfig</module>
         <module>cloud-gray</module>
         <module>cloud-turbine</module>
+        <module>cloud-user</module>
+        <module>cloud-robot</module>
     </modules>
 
     <properties>

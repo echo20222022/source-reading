@@ -14,11 +14,43 @@ eureka:
 #配置路由规则
 zuul:
   routes:
+
+    #正规写法，默认就是按照服务名称进行路由，但一般不会对外暴露服务名
+    #cloud-fd:
+    #  path: /fd/**
+    #  serviceId: cloud-fd
+    #cloud-robot:
+    #  path: /robot/**
+    #  serviceId: cloud-robot
+      #向下游转发时，是否移除前传，在当前例子中，如果不移除就会出现404
+      #strip-prefix: true
+
+    #简写
     cloud-fd: /fd/**
+    cloud-robot: /robot/**
+
+    #传统路由配置，即不依赖注册中心
+    #cloud-robot:
+    #  path: /robot/**
+    #  url: "http://localhost:8085"
+    #cloud-fd:
+    #  path: /fd/**
+    #  serviceId: cloud-fd
+      #配合如下配置
+      #cloud-fd:
+      #  ribbon:
+      #    listOfServers: "http://localhost:8081,http://localhost:8082"
+      #ribbon:
+      #  eureka:
+      #    enabled: false
+
+
   #屏蔽掉通过服务名称访问
   ignored-services: "*"
   #指定统一的前缀
   prefix: /cloud
+  #向下游转发时是否移除前缀
+  stripPrefix: true
   #屏蔽指定路径
   #  *为通配符
   #  /** 可以匹配0或多级路径
@@ -29,6 +61,7 @@ zuul:
   #自定义敏感头过滤器， 会覆盖掉默认的敏感头 ZuulProperties.java -> sensitiveHeaders
   sensitive-headers: token
   ribbon-isolation-strategy: thread
+  add-host-header: true
   #ratelimit:
     #enabled: true  #开启多维度限流
 
@@ -46,6 +79,43 @@ zuul:
   gray:
     users: zhangsan,lisi
     version: V2
+
+#cloud-fd:
+#  ribbon:
+#    listOfServers: "http://localhost:8081,http://localhost:8082"
+#ribbon:
+#  eureka:
+#    enabled: false
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+    cloud-robot:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+
+cloud-robot:
+  ribbon:
+    ReadTimeout: 5000
+    ConnectTimeout: 5000
+cloud-fd:
+  ribbon:
+    ReadTimeout: 5000
+    ConnectTimeout: 5000
+    OkToRetryOnAllOperations: true
+    MaxAutoRetriesNextServer: 2
+    MaxAutoRetries: 1
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
 
 management:
   endpoints:
