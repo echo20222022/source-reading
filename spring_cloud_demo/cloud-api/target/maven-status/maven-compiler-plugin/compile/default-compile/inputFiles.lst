@@ -1,1 +1,6 @@
-/Users/dongzhang/develop/workspace/java/spring_cloud/cloud-api/src/main/java/com/cloud/api/CloudApi.java
+/Users/dongzhang/develop/workspace/echo20222022/open_src/spring_cloud_demo/cloud-api/src/main/java/com/cloud/api/bean/resp/Response.java
+/Users/dongzhang/develop/workspace/echo20222022/open_src/spring_cloud_demo/cloud-api/src/main/java/com/cloud/api/bean/resp/UserResponseData.java
+/Users/dongzhang/develop/workspace/echo20222022/open_src/spring_cloud_demo/cloud-api/src/main/java/com/cloud/api/bean/resp/RobotResponseData.java
+/Users/dongzhang/develop/workspace/echo20222022/open_src/spring_cloud_demo/cloud-api/src/main/java/com/cloud/api/RobotApi.java
+/Users/dongzhang/develop/workspace/echo20222022/open_src/spring_cloud_demo/cloud-api/src/main/java/com/cloud/api/CloudApi.java
+/Users/dongzhang/develop/workspace/echo20222022/open_src/spring_cloud_demo/cloud-api/src/main/java/com/cloud/api/UserApi.java

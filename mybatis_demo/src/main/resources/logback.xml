@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds" debug="false">
+
+    <property name="log.pattern"
+              value="%date{ISO8601} %-1level [%thread] %logger{56}.%method:%L -%msg%n"/>
+    <property name="log.charset" value="UTF-8"/>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 用来定义日志的格式 -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${log.pattern}</pattern>
+            <charset>${log.charset}</charset>
+        </encoder>
+    </appender>
+    <!--<logger name="com.mybatis.test.mapper">
+        <appender-ref ref="stdout" />
+    </logger>-->
+    <root level="debug">
+        <appender-ref ref="stdout" />
+    </root>
+</configuration>

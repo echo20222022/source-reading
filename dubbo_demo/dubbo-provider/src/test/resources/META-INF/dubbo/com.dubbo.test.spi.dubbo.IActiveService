@@ -1,0 +1,2 @@
+activeService1=com.dubbo.test.spi.dubbo.ActiveService1
+activeService2=com.dubbo.test.spi.dubbo.ActiveService2

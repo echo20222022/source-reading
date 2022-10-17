@@ -1,0 +1,4 @@
+helloService1=com.dubbo.test.spi.dubbo.HelloService1
+helloService2=com.dubbo.test.spi.dubbo.HelloService2
+myHelloService=com.dubbo.test.spi.dubbo.MyHelloService
+wrapper=com.dubbo.test.spi.dubbo.HelloServiceWrapper

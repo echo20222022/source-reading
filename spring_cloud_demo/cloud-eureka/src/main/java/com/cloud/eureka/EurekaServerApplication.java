@@ -28,8 +28,8 @@ public class EurekaServerApplication {
     //Collection
     //ArrayList
     public static void main(String[] args) {
-        //SpringApplication.run(EurekaServerApplication.class);
+        SpringApplication.run(EurekaServerApplication.class);
         // LinkedList
-        System.out.println(10 >> 1);
+        //System.out.println(10 >> 1);
     }
 }

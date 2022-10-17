@@ -4,6 +4,21 @@ server:
 spring:
   application:
     name: cloud-user
+  #datasource:
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:mysql://10.211.55.7:3306/users
+    #username: root
+    #password: Gz2021..
+
+
+mybatis:
+  # check-config-location: true
+  #  mybatis框架配置文件，对mybatis的生命周期起作用
+  # config-location: "classpath:mybatis/mybatis-config.xml"
+  #  配置xml路径
+  mapper-locations: "classpath:mappers/*Mapper.xml"
+  #  配置model包路径
+  type-aliases-package: "com.cloud.user.bean.*"
 
 eureka:
   client:
@@ -21,3 +36,4 @@ management:
         include: "*"
   security:
     enabled: false
+
