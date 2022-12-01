@@ -14,7 +14,9 @@ import com.netflix.hystrix.HystrixCommandProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.netflix.ribbon.proxy.annotation.Hystrix;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class FdController {
+public class FdController implements InitializingBean, BeanPostProcessor {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -49,7 +51,7 @@ public class FdController {
         //System.out.println("token=" + token);
         //System.out.println("set-cookie=" + setCookie);
         //System.out.println("cookie="+cookie);
-
+        restTemplate.getForEntity("http://cloud-base/cloud/api/hello", String.class).getBody();
         //FeignClient
         System.out.println(request.getHeader("Host"));
 
@@ -133,6 +135,11 @@ public class FdController {
     @GetMapping("/pathValueUrl/{id}")
     public String pathValueUrl(@PathVariable("id") Long id) {
         return "id => " + id;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+
     }
 
 

@@ -9,6 +9,7 @@ import com.cloud.user.dao.read.ReadUserMapper;
 import com.cloud.user.dao.write.WriteUserMapper;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,12 +42,14 @@ public class UserController implements UserApi {
     }
 
     @Override
+    @Transactional
     public Response<Boolean> addUser() {
         User user = new User();
         user.setName("zhangsan" + UUID.randomUUID().toString().substring(0, 6));
         user.setAge(new Random().nextInt(10));
         user.setSex("male");
         int res = userMapper.insert(user);
+        //int s = 10 / 0;
         Response<Boolean> response = new Response<>();
         response.setCode(200);
         response.setSuccess(true);

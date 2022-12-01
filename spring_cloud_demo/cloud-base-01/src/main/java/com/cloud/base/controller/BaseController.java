@@ -26,6 +26,8 @@ public class BaseController implements CloudApi {
     public String hello() {
         //通过request对象拿到 通过RequetInterceptor设置的header
         HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        System.out.println(request.getHeader("MyHeader"));
+        System.out.println(request.getHeader("RestTemplateHeader"));
         return "Hello, Cloud-Base-01, token => " + request.getHeader("cloud_token");
     }
 

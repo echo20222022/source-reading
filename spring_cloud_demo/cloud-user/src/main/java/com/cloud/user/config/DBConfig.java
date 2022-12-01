@@ -6,8 +6,11 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -97,6 +100,11 @@ public class DBConfig {
         return dataSource;
     }
 
+    @Bean
+    public PlatformTransactionManager platformTransactionManager() {
+        return new DataSourceTransactionManager(dataSource());
+    }
+
     /*@Bean
     @Qualifier("sqlSessionFactoryBean")
     public SqlSessionFactoryBean writeSqlSessionFactoryBean() throws Exception {
@@ -104,5 +112,11 @@ public class DBConfig {
         sqlSessionFactoryBean.setDataSource(dataSource());
         sqlSessionFactoryBean.setMapperLocations(new FileSystemResource("/Users/dongzhang/develop/workspace/echo20222022/open_src/spring_cloud_demo/cloud-user/src/main/resources/mappers/UserMapper.xml"));
         return sqlSessionFactoryBean;
+    }*/
+
+    /*@Bean()
+    @Lazy
+    public Student newS() {
+        return new Student();
     }*/
 }

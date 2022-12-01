@@ -108,6 +108,9 @@ cloud-fd:
   ribbon:
     ReadTimeout: 5000
     ConnectTimeout: 5000
+    OkToRetryOnAllOperations: true
+    MaxAutoRetriesNextServer: 2
+    MaxAutoRetries: 1
 
 ribbon:
   ReadTimeout: 5000

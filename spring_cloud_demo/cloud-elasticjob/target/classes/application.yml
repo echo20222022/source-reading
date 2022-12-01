@@ -1,0 +1,35 @@
+server:
+  port: 10000
+spring:
+  name: ElasticJobApplication
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.211.55.7:3306/elasticjob
+    username: root
+    password: Gz2021..
+
+elasticjob:
+  tracing:
+    type: RDB
+  regCenter:
+    serverLists: localhost:2181
+    namespace: ElasticJobApplication
+  jobs:
+    #脚本任务
+    elasticScriptJob:
+      elasticJobType: SCRIPT
+      cron: 0/10 * * * * ?
+      shardingTotalCount: 3
+      props:
+        script.command.line: "echo Script Job: "
+    #http任务
+    elasticHttpJob:
+      jobBootstrapBeanName: httpElasticJobBean
+      elasticJobType: HTTP
+      cron: 0/10 * * * * ?
+      shardingTotalCount: 3
+      props:
+        http.uri: http://localhost:8084/api/user/addUser
+        http.method: POST
+        http.data: key=value
+

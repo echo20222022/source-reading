@@ -15,6 +15,8 @@ public class BaseController implements CloudApi {
 
     public String hello() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        System.out.println(request.getHeader("MyHeader"));//RestTemplateHeader
+        System.out.println(request.getHeader("RestTemplateHeader"));//RestTemplateHeader
         return "Hello, Cloud-Base-02, cloudToken => " + request.getHeader("cloud_token");
     }
 
